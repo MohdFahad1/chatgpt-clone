@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import OptionSelection from './components/OptionSelection';
+import { arrayItems } from './AIOptions';
+import Translation from './components/Translation';
 
 function App() {
+
+  const [option, setOption] = useState({});
+
+  const selectOption = (option) => {
+    setOption(option);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {Object.values(option).length === 0 ? (<OptionSelection arrayItems={arrayItems} selectOption={selectOption} />) : (<Translation />)}
     </div>
   );
 }
