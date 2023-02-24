@@ -1,14 +1,18 @@
 import React from 'react'
 
-const Translation = () => {
+const Translation = ({ setInput, doStuff, result }) => {
     return (
         <div className='translation'>
-            <textarea className="text-area" cols={55} rows={10}></textarea>
+        <h1></h1>
+            <textarea className="text-area" onChange={(e) => setInput(e.target.value)
+            }></textarea>
             <div>
-                <button>Do Your Stuf</button>
+                <button className="action-btn" onClick={doStuff}>DO YOUR STUFF !</button>
             </div>
+            <h3 className='result-text'>{result.length > 0 ? result : ""}</h3>
+            
         </div>
     )
 }
 
-export default Translation
+export default Translation;
